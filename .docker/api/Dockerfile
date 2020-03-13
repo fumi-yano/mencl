@@ -15,7 +15,9 @@ WORKDIR $APP_HOME
 
 ENV GO111MODULE=on
 
-RUN apt-get update \
+# go moduleを使うとrealizeが今現状使えないのでfreshを使う
+RUN go get github.com/pilu/fresh \
+  && apt-get update \
   && apt-get install -y mariadb-client \
   && echo "export PATH=$PATH:$GOBIN" > /root/.bashrc
 

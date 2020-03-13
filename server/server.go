@@ -16,7 +16,7 @@ func router() *gin.Engine {
 
     u := r.Group("/users")
     {
-        ctrl := user.Controller{}      
+        ctrl := user.Controller{}
         u.GET("", ctrl.Index)
         u.GET("/:id", ctrl.Show)
         u.POST("", ctrl.Create)

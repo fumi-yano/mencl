@@ -8,4 +8,5 @@ done
 
 echo "app is starting...!"
 # exec realize start
-exec go run main.go
+# exec go run main.go
+exec fresh
