@@ -7,15 +7,16 @@ ENV GOBIN $ROOTDIR/bin
 
 COPY main.go $APP_HOME
 COPY start_app.sh $APP_HOME
-COPY Gopkg.toml $APP_HOME
+COPY go.mod $APP_HOME
+COPY go.sum $APP_HOME
+COPY . $APP_HOME
 
 WORKDIR $APP_HOME
 
-RUN go get github.com/oxequa/realize \
-  && go get github.com/golang/dep/cmd/dep \
-  && apt-get update \
+ENV GO111MODULE=on
+
+RUN apt-get update \
   && apt-get install -y mariadb-client \
-  && echo "export PATH=$PATH:$GOBIN" > /root/.bashrc \
-  && dep ensure
+  && echo "export PATH=$PATH:$GOBIN" > /root/.bashrc
 
 CMD ["sh", "./start_app.sh"]
