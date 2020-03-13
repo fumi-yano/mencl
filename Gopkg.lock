@@ -54,8 +54,8 @@
   name = "github.com/golang/protobuf"
   packages = ["proto"]
   pruneopts = "UT"
-  revision = "5d5b4c10bd43f85e63bd9e4a3fa9b1ea2ef88af2"
-  version = "v1.3.4"
+  revision = "84668698ea25b64748563aa20726db66a6b8d299"
+  version = "v1.3.5"
 
 [[projects]]
   digest = "1:3f4a1fbb5a68fd7a76273c7576a10c39d7a94247bf8c7ac1ae0c8200efa16ade"
