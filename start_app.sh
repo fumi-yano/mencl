@@ -7,4 +7,6 @@ until mysqladmin ping -h db -P 3306 --silent; do
 done
 
 echo "app is starting...!"
-exec realize start
+# exec realize start
+# exec go run main.go
+exec fresh

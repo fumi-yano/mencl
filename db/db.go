@@ -24,8 +24,7 @@ func Init() {
   if err != nil {
     panic(err)
   }
-
-  autoMigration()
+  // autoMigration()
 }
 
 // GetDB is called in models
