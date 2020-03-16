@@ -15,6 +15,7 @@ services:
     volumes:
       - ./.docker/db/conf.d:/etc/mysql/conf.d
       - ./.docker/db/log/mysql:/var/log/mysql
+      - ./.docker/db/volumes:/var/lib/mysql
   api:
     build:
       context: .
