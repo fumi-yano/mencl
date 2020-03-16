@@ -6,8 +6,8 @@ import (
 
 type Model struct {
    ID        uint `gorm:"primary_key" json:"id"`
-   CreatedAt time.Time
-   UpdatedAt time.Time
+   CreatedAt time.Time `json:"created_at"`
+   UpdatedAt time.Time `json:"updated_at"`
    DeletedAt *time.Time `sql:"index" json:"-"`
 }
 
@@ -15,6 +15,6 @@ type Model struct {
 type User struct {
   //  `ID`, `CreatedAt`, `UpdatedAt`, `DeletedAt`フィールドを`User`モデルに注入
   Model
-  Name string `json:"name"`
+  Name string `json:"name"validate:"required"`
   Email string `json:"email"`
 }

@@ -1,10 +1,11 @@
 package user
 
 import (
-    "github.com/gin-gonic/gin"
-
-    "api/db"
-    "api/entity"
+  _ "fmt"
+  "github.com/gin-gonic/gin"
+  "api/db"
+  "api/entity"
+  "gopkg.in/go-playground/validator.v9"
 )
 
 // Service procides user's behavior
@@ -32,6 +33,8 @@ func (s Service) GetAll() ([]User, error) {
 func (s Service) CreateModel(c *gin.Context) (User, error) {
     db := db.GetDB()
     var u User
+    // https://gist.github.com/konojunya/453fa1e5f84058fd8cb8d7c0122348e1
+    // Bindはparamsみたいなもの多分...
 
     if err := c.BindJSON(&u); err != nil {
         return u, err
@@ -40,7 +43,6 @@ func (s Service) CreateModel(c *gin.Context) (User, error) {
     if err := db.Create(&u).Error; err != nil {
         return u, err
     }
-
     return u, nil
 }
 
@@ -84,4 +86,14 @@ func (s Service) DeleteByID(id string) error {
     }
 
     return nil
+}
+
+// Validator宣言
+var validate *validator.Validate
+
+// BeforeSave User
+func (u *User) BeforeSave() (err error) {
+  validate = validator.New()
+  err = validate.Struct(u)
+  return err
 }
